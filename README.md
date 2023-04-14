@@ -6,3 +6,20 @@ Reproducibility is core in data analysis for ensuring the transparency, reliabil
 
 ## Study case:
 
+
+install.packages("shiny")
+
+
+## Packages
+To create an environment adecuate we used `renv`
+## Installation
+
+Installation
+
+Install the latest version of renv from CRAN with:
+
+install.packages("renv")
+
+You can also install the development version of renv from R-universe with:
+
+install.packages("renv", repos = "https://rstudio.r-universe.dev")

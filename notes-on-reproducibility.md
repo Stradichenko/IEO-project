@@ -13,3 +13,40 @@ Use a package management system: Use a package management system like renv or pa
 Use a reproducible document format: Use a reproducible document format like R Markdown or Jupyter Notebooks to document your analysis. These formats allow you to embed code, output, and narrative text in a single document, making it easier for others to understand and reproduce your work.
 Keep track of dependencies: Keep track of any external dependencies, such as data sources or APIs, and document how they were obtained. This helps others to understand the source of your data and reproduce your results.
 Use automated testing: Use automated testing frameworks like testthat or assertive to ensure that your code is working as expected. This can help catch errors early and ensure that changes to your code don't introduce new errors.
+
+
+```r
+# Package name and repository details
+pkg_name <- "PACKAGE NAME"
+pkg_repo <- "CRAN"  # Other options: "GITHUB" or "BIOC"
+
+# Check if the package is installed
+if (!requireNamespace(pkg_name, quietly = TRUE)) {
+  
+  # Install package from the appropriate repository
+  if (pkg_repo == "CRAN") {
+    install.packages(pkg_name)
+  } else if (pkg_repo == "GITHUB") {
+    # If necessary, install devtools package for installing from GitHub
+    if (!require(devtools)) {
+      install.packages("devtools")
+    }
+    # Install from GitHub
+    devtools::install_github(pkg_name)
+  } else if (pkg_repo == "BIOC") {
+    # If necessary, install BiocManager for installing from Bioconductor
+    if (!requireNamespace("BiocManager", quietly = TRUE)) {
+      install.packages("BiocManager")
+    }
+    # Install from Bioconductor
+    BiocManager::install(pkg_name)
+  }
+  
+  # Load the package
+  library(pkg_name)
+} else {
+  # If the package is already installed, load it
+  library(pkg_name)
+}
+
+```
